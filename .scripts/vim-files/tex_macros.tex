@@ -1,0 +1,9 @@
+" ---- Custom macro unbinds
+call IUNMAP('ESP', 'tex')
+
+" ---- Custom macros
+call IMAP('DSS', "\\begin{displaymath}\<CR><++>\<CR>\\end{displaymath}<++>", 'tex')
+call IMAP('AALG', "\\begin{align*}\<CR><++>\<CR>\\end{align*}<++>", 'tex')
+call IMAP('ESPL', "\\begin{split}\<CR><++>\<CR>\\end{split}<++>", 'tex')
+call IMAP('INSM', '$<++>$<++>', 'tex')
+call IMAP('FFGI', "\\begin{figure}[h]\<CR>\\includegraphics{<++>}<CR>\\end{figure}")
