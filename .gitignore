@@ -1,0 +1,8 @@
+*
+/*
+.vim/plugged/*
+!.gitignore
+!.bashrc
+!.vimrc
+!.vim/*
+!.scripts/*
