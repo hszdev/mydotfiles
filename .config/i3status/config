@@ -1,5 +1,5 @@
 # bar {
-# 	status_command exec /home/henriko/.config/i3status/my_bar.sh
+# 	status_command exec $HOME/.config/i3status/my_bar.sh
 # }
 
 bar {
