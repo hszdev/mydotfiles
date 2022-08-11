@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TIMEW=$(timew)
+
+if ! $(echo "$TIMEW" | grep "Tracking"); then
+    echo "Nothing to track."
+else
+    CURRENT_TASK="$(timew | grep "Tracking" | cut -d ' ' -f 2-)"
+    TIME_ELAPSED="$(timew | grep "Total" | cut -d ' ' -f 2-)"
+    echo "Tracking: $CURRENT_TASK - $TIME_ELAPSED"
+fi

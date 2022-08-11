@@ -1,0 +1,31 @@
+command=$SCRIPT_DIR/$BLOCK_NAME
+seperator=true
+seperator_block_width=20
+
+[timew]
+command=echo " $(./timew-block)"
+interval=5
+
+[ram]
+command=echo "  $(./ram)"
+interval=5
+color=#FFFFFF;
+
+
+[volume]
+command=if [ $button ]; then pavucontrol; else pulseaudio-ctl full-status | awk '{ printf "%i%\n", $1 }'; fi
+interval=1
+label=  
+
+[disk]
+command=echo "   / $(df -h / | tail -n 1 | awk '{ print $5 }')"
+# command=./disk_usage
+#command=./disk
+color=#FFFFFF
+interval=30
+
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+command=echo "   $(date '+%H:%M') $(date '+%m/%d/%y')"
+interval=5
