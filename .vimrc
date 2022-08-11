@@ -1,5 +1,3 @@
-set rtp+=~/.vim/bundle/Vundle.vim " - include vundle in runtime path
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -14,20 +12,27 @@ let g:vimtex_compiler_method='latexmk --pdf'
 
 " ---- Plug plugin manager
 call plug#begin()
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tomasiser/vim-code-dark'
-Plug 'https://github.com/jsnal/vim-serape', { 'tag': 'v0.2.2' }
+Plug 'itchyny/lightline.vim' " - Toolbar line to show mode and messages
+Plug 'scrooloose/nerdtree' " - Directory tree ( maybe delete bc of fzf
+Plug 'tomasiser/vim-code-dark' " - dark color scheme vim
+Plug 'https://github.com/jsnal/vim-serape', { 'tag': 'v0.2.2' } " - Color scheme
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " ---- https://github.com/junegunn/fzf.vim
 Plug 'junegunn/fzf.vim' " ---- https://github.com/junegunn/fzf.vim
 Plug 'terryma/vim-multiple-cursors' " ---- https://github.com/terryma/vim-multiple-cursors
-" - Plug 'neoclide/coc.nvim', {'branch': 'release'} " ---- https://github.com/neoclide/coc.nvim (nodejs is required :[)
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " ---- https://github.com/neoclide/coc.nvim (nodejs is required :[)
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': ':CocInstall coc-yaml coc-vimtex'}
+Plug 'lervag/vimtex' " -  Vimtex plugin
 call plug#end()
+" ---- Vimtex configuration
+filetype plugin indent on
+syntax enable
 
-" ---- Vundle plugins
-call vundle#begin()
-Plugin 'ycm-core/YouCompleteMe'
-call vundle#end()
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_method = 'latexmk'   " - Latexmk as compiler
+let maplocalleader = ","                    " - Replace the \ with , for using commands
+
+" ---- Coc plugins
 
 " ---- switching between split windows
 nmap <silent> <A-Up> :wincmd k<CR>
@@ -36,7 +41,9 @@ nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
 " ---- nerd tree setting
-autocmd vimenter * NERDTree " - always enter NERD tree when vim opens
+" autocmd vimenter * NERDTree " - always enter NERD tree when vim opens
+" " use <c-space>for trigger completion inoremap
+inoremap <silent><expr> <c-space> coc#refresh()
 
 set number
 set background=dark
@@ -54,22 +61,22 @@ if !hasmapto('<Plug>IMAP_JumpForward', 'n')
 endif
 
 " ---- custom imaps
-:nnoremap <Space> i_<Esc>r
+"  - Insert something in place here
+:nnoremap <Space> i_<Esc>r 
 map ; :Files<CR> 
 
 " ---- unmap macro
 
 
-" ---- YouCompleteMe options
-"  Filetypes YouCompleteMe ignore
-let g:ycm_filetype_blacklist = { 
-      \ 'tex': 0,
-      \}
-
 " ---- colo theme
 " - colorscheme serape 
-colorscheme codedark
+colorscheme codedark " - Use codedark as a theme
 let g:lightline = {
       \ 'colorscheme': 'darcula',
       \ }
 
+
+" ---- tab settings
+set tabstop=4
+set shiftwidth=4
+set expandtab
