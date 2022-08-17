@@ -13,20 +13,24 @@ let g:vimtex_compiler_method='latexmk --pdf'
 " ---- Plug plugin manager
 call plug#begin()
 Plug 'itchyny/lightline.vim' " - Toolbar line to show mode and messages
-Plug 'scrooloose/nerdtree' " - Directory tree ( maybe delete bc of fzf
-Plug 'tomasiser/vim-code-dark' " - dark color scheme vim
-Plug 'https://github.com/jsnal/vim-serape', { 'tag': 'v0.2.2' } " - Color scheme
+Plug 'preservim/nerdtree' | " --- NERDTree plugin https://github.com/preservim/nerdtree
+Plug 'Xuyuanp/nerdtree-git-plugin' | " --- show git related info on NERDTree https://github.com/Xuyuanp/nerdtree-git-plugin
+Plug 'ryanoasis/vim-devicons' " --- Add devicons to files and folders https://github.com/ryanoasis/vim-devicons
+Plug 'unkiwii/vim-nerdtree-sync' " --- Sync NERDTree with the current open file
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " ---- https://github.com/junegunn/fzf.vim
 Plug 'junegunn/fzf.vim' " ---- https://github.com/junegunn/fzf.vim
-Plug 'terryma/vim-multiple-cursors' " ---- https://github.com/terryma/vim-multiple-cursors
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} " --- Better multi cursor support https://github.com/mg979/vim-visual-multi
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " ---- https://github.com/neoclide/coc.nvim (nodejs is required :[)
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': ':CocInstall coc-yaml coc-vimtex'}
+Plug 'NLKNguyen/papercolor-theme' " --- PaperColor theme for vim https://github.com/vim-scripts/PaperColor.vim
 Plug 'lervag/vimtex' " -  Vimtex plugin
 call plug#end()
 " ---- Vimtex configuration
 filetype plugin indent on
 syntax enable
+
+execute pathogen#infect()
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_method = 'latexmk'   " - Latexmk as compiler
@@ -41,12 +45,23 @@ nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
 " ---- nerd tree setting
-" autocmd vimenter * NERDTree " - always enter NERD tree when vim opens
+autocmd vimenter * NERDTree " - always enter NERDTree when vim opens
+autocmd BufWinEnter * NERDTreeMirror " - open NERDTree when you open something is a new tab
+map <C-o> :NERDTreeToggle %<CR>     " - Toggle NERDTree wit control+o
+
+" - Tab navigations
+map <C-l> gt<CR>
+map <C-h> gT<CR>
+map <C-p> :Buffer<CR>
+
+" Settings for NERDTree sync
+let g:nerdtree_sync_cursorline = 1
+let g:NERDTreeHighlightCursorline = 1
+
 " " use <c-space>for trigger completion inoremap
 inoremap <silent><expr> <c-space> coc#refresh()
 
 set number
-set background=dark
 set laststatus=2
 set noshowmode
 set showmatch " - show mathcing parentheses
@@ -69,12 +84,12 @@ map ; :Files<CR>
 
 
 " ---- colo theme
-" - colorscheme serape 
-colorscheme codedark " - Use codedark as a theme
-let g:lightline = {
-      \ 'colorscheme': 'darcula',
-      \ }
+set background=dark " --- make the standard colorscheme for vim dark
+colorscheme PaperColor " - use the PaperColor theme
 
+let g:lightline = {
+      \ 'colorscheme': '16color',
+      \ }
 
 " ---- tab settings
 set tabstop=4
