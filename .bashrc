@@ -1,4 +1,4 @@
-#
+     #
 # ~/.bashrc
 #
 
@@ -66,8 +66,7 @@ parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' -e 's/^[ \t]*//' | awk '{print "[" $0 "]"}'
 }
 
-
-export PS1="\033[48;5;164m\$(parse_git_branch)\e[m [ \[$(tput sgr0)\]\[\033[38;5;192m\]\h\[$(tput sgr0)\] @ \[$(tput sgr0)\]\[\033[38;5;147m\]\W\[$(tput sgr0)\] ] \[$(tput sgr0)\]\[\033[38;5;192m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;13m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\] [ \[$(tput sgr0)\]\[\033[38;5;156m\]\u\[$(tput sgr0)\] - \[$(tput sgr0)\]\[\033[38;5;111m\]\W\[$(tput sgr0)\] ] \\$ \[$(tput sgr0)\]"
 
 alias e="xdg-open"
 alias html2text="python ~/scripts/html2text.py"
@@ -105,6 +104,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias vim=nvim
+
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
@@ -118,5 +119,7 @@ markdown2pdf_convert(){
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-
-
+# Use ripgrep to ignore files for fzf
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
+fi
