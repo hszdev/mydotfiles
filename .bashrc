@@ -1,4 +1,4 @@
-     #
+          #
 # ~/.bashrc
 #
 
@@ -66,7 +66,7 @@ parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' -e 's/^[ \t]*//' | awk '{print "[" $0 "]"}'
 }
 
-export PS1="\[\033[38;5;13m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\] [ \[$(tput sgr0)\]\[\033[38;5;156m\]\u\[$(tput sgr0)\] - \[$(tput sgr0)\]\[\033[38;5;111m\]\W\[$(tput sgr0)\] ] \\$ \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;13m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\] [ \[$(tput sgr0)\]\[\033[38;5;156m\]\u\[$(tput sgr0)\] ~ \[$(tput sgr0)\]\[\033[38;5;111m\]\W\[$(tput sgr0)\] ] \\$ \[$(tput sgr0)\]"
 
 alias e="xdg-open"
 alias html2text="python ~/scripts/html2text.py"
