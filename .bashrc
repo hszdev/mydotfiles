@@ -1,4 +1,4 @@
-          #
+#
 # ~/.bashrc
 #
 
@@ -26,7 +26,7 @@ esac
 
 alias ls='ls --color=auto'
 alias sudo="sudo -v; sudo"
-alias v="~/.config/vifm/vifmimg/vifmrun ."
+alias v="vifmrun ."
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias vifmimg="~/.config/vifm/vifmimg/vifmimg"
 
@@ -66,7 +66,7 @@ parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' -e 's/^[ \t]*//' | awk '{print "[" $0 "]"}'
 }
 
-export PS1="\[\033[38;5;13m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\] [ \[$(tput sgr0)\]\[\033[38;5;156m\]\u\[$(tput sgr0)\] ~ \[$(tput sgr0)\]\[\033[38;5;111m\]\W\[$(tput sgr0)\] ] \\$ \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;13m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\] [ \[$(tput sgr0)\]\[\033[38;5;156m\]\u\[$(tput sgr0)\]: \[$(tput sgr0)\]\[\033[38;5;45m\]\W\[$(tput sgr0)\] ] \\$ \[$(tput sgr0)\]"
 
 alias e="xdg-open"
 alias html2text="python ~/scripts/html2text.py"
@@ -91,6 +91,7 @@ export COURSESDIR=$HOME/Documents/courses
 export PROJECTDIR=$HOME/Documents/projects
 
 export PATH=$PATH:$HOME/.local/bin/
+export PATH=$PATH:$HOME/.config/vifm/vifmimg
 
 
 ############ SHORTCUTS FOR Quality of Life
