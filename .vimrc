@@ -9,10 +9,12 @@ filetype indent on
 let g:tex_flavor='latex --pdf'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:vimtex_compiler_method='latexmk --pdf'
+set nocompatible
 
 " ---- Plug plugin manager
 call plug#begin()
-Plug 'itchyny/lightline.vim' " - Toolbar line to show mode and messages
+Plug 'vim-airline/vim-airline' " -- Airline statusbar 
+Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree' | " --- NERDTree plugin https://github.com/preservim/nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin' | " --- show git related info on NERDTree https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'ryanoasis/vim-devicons' " --- Add devicons to files and folders https://github.com/ryanoasis/vim-devicons
@@ -25,12 +27,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lock
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': ':CocInstall coc-yaml coc-vimtex'}
 Plug 'NLKNguyen/papercolor-theme' " --- PaperColor theme for vim https://github.com/vim-scripts/PaperColor.vim
 Plug 'lervag/vimtex' " -  Vimtex plugin
+Plug 'sheerun/vim-polyglot' " - Language support for vim
 call plug#end()
 " ---- Vimtex configuration
 filetype plugin indent on
 syntax enable
 
-execute pathogen#infect()
+let g:deoplete#enable_at_startup = 1
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_method = 'latexmk'   " - Latexmk as compiler
@@ -47,7 +50,9 @@ nmap <silent> <A-Right> :wincmd l<CR>
 " ---- nerd tree setting
 autocmd vimenter * NERDTree " - always enter NERDTree when vim opens
 autocmd BufWinEnter * NERDTreeMirror " - open NERDTree when you open something is a new tab
-map <C-o> :NERDTreeToggle %<CR>     " - Toggle NERDTree wit control+o
+map <C-o> :NERDTreeToggle %<CR>     " - Toggle NERDTree with control+o
+let g:NERDTreeNotificationThreshold = 500 " - Limit NERDTree caching
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " - Close NERDTree if it is the last tab
 
 " - Tab navigations
 map <C-l> gt<CR>
@@ -82,14 +87,15 @@ map ; :Files<CR>
 
 " ---- unmap macro
 
-
-" ---- colo theme
+          
+" ---- color theme
 set background=dark " --- make the standard colorscheme for vim dark
 colorscheme PaperColor " - use the PaperColor theme
 
-let g:lightline = {
-      \ 'colorscheme': '16color',
-      \ }
+" --- airline config
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='jellybean'
 
 " ---- tab settings
 set tabstop=4

@@ -1,6 +1,8 @@
 /** Basic config file **/
 
 configuration {
+  modi: "drun,window,run,ssh,emoji";
   show-icons:         true;
   icon-theme:         "Papirus";
 }
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"

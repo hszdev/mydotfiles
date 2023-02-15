@@ -1,10 +1,10 @@
 #!/bin/sh
 
 setxkbmap -layout dk
-blueman-manager &
 export PATH=$PATH:~/yaah/src/yaah-3.0.0/yaah
 export PATH=$PATH:/home/henriko/.config/vifm/
 export PATH=$PATH:/opt/idea/bin/idea.sh
 export PATH=$PATH:/home/henriko/.local/share/gem/ruby/3.0.0/bin
 xdg-settings set default-web-browser firefox.desktop
-feh --bg-scale ~/Pictures/bg.jpg
+#feh --bg-scale ~/Pictures/bg.jpg
+$HOME/.fehbg

@@ -9,7 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+# Alt_l as mod key
+set $mod Mod1 
+# Win_l as mod key
+#set $mod Mod4 
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -43,6 +46,9 @@ floating_modifier $mod
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec kitty
+
+# rofimoji
+bindsym $mod+Shift+d exec --no-startup-id rofi -modi emoji -show emoji -theme /home/henriko/.config/rofi/launchers/colorful/style_5.rasi
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -95,6 +101,10 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# floating on all monitors
+bindsym $mod+shift+w sticky toggle 
+
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -157,9 +167,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
