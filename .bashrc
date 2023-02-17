@@ -124,4 +124,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
 fi
-alias config=/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME
+
+
+# Add dotfiles config alias
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
