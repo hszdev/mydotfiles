@@ -170,7 +170,6 @@ spotify-launcher
 sqlitebrowser
 sshfs
 sshpass
-steam
 sudo
 sxiv
 syncthing
