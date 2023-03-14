@@ -216,3 +216,4 @@ youtube-dl
 zathura
 zathura-pdf-mupdf
 zip
+picom
