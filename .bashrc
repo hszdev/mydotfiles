@@ -83,6 +83,16 @@ activate_env(){
     source $1/bin/activate
 }
 
+# Source binary - Get the path for a binary in your path 
+realpath_bin(){
+    if [[ $# != 1 ]]; then echo I need a single argument, the binary executable.; return 1; fi
+
+    BIN_PATH=which $1
+    LINK_PATH=$(readlink -f $(which $1))
+    #if [[ $BIN_APTH == $LINK_PATH ]]; then echo "No link for the binary $1"; return 1; fi
+}
+
+
 alias boost="python -m flask_boost"
 
 shopt -s cdable_vars # makes it possible to cd to VARS
@@ -128,3 +138,6 @@ fi
 
 # Add dotfiles config alias
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
