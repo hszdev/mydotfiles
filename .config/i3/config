@@ -18,6 +18,10 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 8
 
+
+set $ROFI_POWERMENU_PATH $HOME/.config/rofi/powermenu/type-2/powermenu.sh
+set $ROFI_PATH $HOME/.config/rofi/launchers/type-2/style-4.rasi
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -48,13 +52,17 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 
 # rofimoji
-bindsym $mod+Shift+d exec --no-startup-id rofi -modi emoji -show emoji -theme /home/henriko/.config/rofi/launchers/colorful/style_5.rasi
+bindsym $mod+Shift+d exec --no-startup-id rofi -modi emoji -show emoji -theme $ROFI_PATH
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id /home/henriko/.config/rofi/bin/launcher_colorful
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme $ROFI_PATH
+
+# start window mode rofi
+bindsym $mod+m exec --no-startup-id rofi -show window -theme $ROFI_PATH
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -208,8 +216,7 @@ bar {
 }
 
 # custom
-bindsym $mod+p exec "~/.config/rofi/bin/powermenu"
-bindsym $mod+m exec "window"
+bindsym $mod+p exec $ROFI_POWERMENU_PATH
 client.focused #2e2e2d #2e2e2d #dc19fa #859900
 font pango: ShareTechMono 15px
 title_align center
