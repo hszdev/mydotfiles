@@ -56,8 +56,36 @@ return require('packer').startup(function(use)
         }
     }
 
-    use('mfussenegger/nvim-jdtls')
-    use("folke/zen-mode.nvim")
+    use ('mfussenegger/nvim-jdtls')
+    use ("folke/zen-mode.nvim")
+    use ('mfussenegger/nvim-jdtls')
+    use ('nanozuki/tabby.nvim')
+
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require('toggleterm').setup({
+          open_mapping = '<C-T>',
+          direction = 'horizontal',
+          shade_terminals = true
+        })
+    end}
+
+    -- Lua
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+        require("which-key").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
+
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+    vim.opt.termguicolors = true
+    require("bufferline").setup{}
 
     use('nanozuki/tabby.nvim')
 

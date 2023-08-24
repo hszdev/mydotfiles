@@ -2,6 +2,13 @@ command=$SCRIPT_DIR/$BLOCK_NAME
 seperator=true
 seperator_block_width=20
 
+
+[CODE MODE]
+markup=pango
+command=./code_mode
+background=#000000
+interval=1
+
 [Energy]
 markup=pango
 command=./i3-energi-tracker/main.py now

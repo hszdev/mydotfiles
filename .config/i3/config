@@ -175,10 +175,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym l resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -221,7 +221,7 @@ client.focused #2e2e2d #2e2e2d #dc19fa #859900
 font pango: ShareTechMono 15px
 title_align center
 bindsym $mod+Control+q kill
-
+bindsym $mod+Shift+s exec . ./code_mode.sh
 
 #### Screen shots
 

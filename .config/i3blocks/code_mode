@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ "$CODE_MODE" = "1" ]]; then
+    echo "<span fgcolor=\"black\" bgcolor=\"#FFAA00\"> CODE MODE </span>"
+else
+    echo ""
+fi
