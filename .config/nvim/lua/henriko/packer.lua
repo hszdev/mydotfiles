@@ -59,7 +59,6 @@ return require('packer').startup(function(use)
     use ('mfussenegger/nvim-jdtls')
     use ("folke/zen-mode.nvim")
     use ('mfussenegger/nvim-jdtls')
-    use ('nanozuki/tabby.nvim')
 
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
         require('toggleterm').setup({
@@ -90,4 +89,10 @@ return require('packer').startup(function(use)
     use('nanozuki/tabby.nvim')
 
     use("m4xshen/hardtime.nvim")
+
+    use 'lervag/vimtex'
+    use 'junegunn/vim-easy-align'
+
+
 end)
+
