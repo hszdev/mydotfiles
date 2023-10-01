@@ -56,7 +56,6 @@ return require('packer').startup(function(use)
         }
     }
 
-    use ('mfussenegger/nvim-jdtls')
     use ("folke/zen-mode.nvim")
     use ('mfussenegger/nvim-jdtls')
 
@@ -92,7 +91,10 @@ return require('packer').startup(function(use)
 
     use 'lervag/vimtex'
     use 'junegunn/vim-easy-align'
-
-
+    -- Function doc support
+    use {
+      'kkoomen/vim-doge',
+      run = ':call doge#install()'
+    }
 end)
 

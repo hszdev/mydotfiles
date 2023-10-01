@@ -92,7 +92,6 @@ realpath_bin(){
     #if [[ $BIN_APTH == $LINK_PATH ]]; then echo "No link for the binary $1"; return 1; fi
 }
 
-
 alias boost="python -m flask_boost"
 
 shopt -s cdable_vars # makes it possible to cd to VARS
@@ -102,6 +101,14 @@ export PROJECTDIR=$HOME/Documents/projects
 
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/.config/vifm/vifmimg
+
+# Check if vim exists and use it as git editor
+if command nvim -v &> /dev/null; then
+    export GIT_EDITOR=nvim 
+elif command vim -v &> /dev/null; then
+    export GIT_EDITOR=vim
+fi
+
 
 
 ############ SHORTCUTS FOR Quality of Life
@@ -145,3 +152,14 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# Set npm global path to home.
+npm config set prefix ‘~/.npm-global’
+
+export PATH=~/.npm-global/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+export CODE_MODE=0
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
