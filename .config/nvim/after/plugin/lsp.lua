@@ -47,6 +47,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "gp", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vtr", function() require('telescope.builtin').lsp_references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float() end, opts)
@@ -60,5 +61,9 @@ vim.diagnostic.config({
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+-- Setup lsp error lines
+require("lsp_lines").setup()
+
 
 lsp.setup()

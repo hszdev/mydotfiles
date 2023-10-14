@@ -102,5 +102,14 @@ return require('packer').startup(function(use)
       'kkoomen/vim-doge',
       run = ':call doge#install()'
     }
+
+    -- Wrap text for errors to multiple lines
+    use({
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      config = function()
+        require("lsp_lines").setup()
+      end,
+    })
+
 end)
 
